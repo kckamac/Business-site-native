@@ -51,23 +51,34 @@ nav {
   font-weight: 500;
 }
 
-/*style the hero section */
+/* Style the hero section */
 
 .hero {
+  background-image: url('../images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding-block: 0;
+}
+
+.hero-overlay {
   max-width: var(--max-width);
   margin: auto;
-  padding: 4rem 1rem;
-  text-align: center;
+  padding: 6rem 1rem;
+  background: rgba(0, 0, 0, 0.55);
 }
 
 .hero h1 {
   font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 1rem;
+  color: white;
 }
 
 .hero p {
   margin-bottom: 2rem;
   font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .cta-button {
@@ -86,6 +97,12 @@ nav {
   padding: 4rem 1rem;
 }
 
+.services h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 2.5rem;
+}
+
 .service-grid {
   max-width: var(--max-width);
   margin: auto;
@@ -101,6 +118,193 @@ nav {
   text-align: center;
 }
 
+/* Style the Why Choose Us section */
+
+.why-choose-us {
+  background: var(--bg-color);
+  padding: 4rem 1rem;
+}
+
+.why-choose-us h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 3rem;
+}
+
+.why-grid {
+  max-width: var(--max-width);
+  margin: auto;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+  align-items: center;
+}
+
+.why-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.why-reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.reason {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.reason-icon {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.reason-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+  color: var(--text-color);
+}
+
+.reason-content p {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* Style the Blog / News section */
+/*
+
+.blog {
+  background: #f9fafb;
+  padding: 4rem 1rem;
+}
+
+.blog h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.5rem;
+}
+
+.blog-subtitle {
+  text-align: center;
+  color: #4b5563;
+  margin-bottom: 3rem;
+  font-size: 1rem;
+}
+
+.blog-grid {
+  max-width: var(--max-width);
+  margin: auto;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.blog-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.blog-thumbnail {
+  position: relative;
+}
+
+.blog-thumbnail img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-category {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: var(--primary-color);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blog-content {
+  padding: 1.5rem;
+}
+
+.blog-content h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+.blog-content h3 a {
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color 0.2s ease;
+}
+
+.blog-content h3 a:hover {
+  color: var(--primary-color);
+}
+
+.blog-content p {
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.author-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.blog-meta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.author-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.published-date {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.blog-cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+*/
+
 /* Style the footer section */
 
 footer {
@@ -110,7 +314,7 @@ footer {
   color: white;
 }
 
-/*Let's polish our site with transition effects for better ux */
+/* Polish with transition effects for better UX */
 /* Apply navigational hover effects */
 
 .nav-links a {
@@ -133,7 +337,7 @@ footer {
   width: 100%;
 }
 
-/* Apply botton interaction effects */
+/* Apply button interaction effects */
 
 .cta-button {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -155,14 +359,37 @@ footer {
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
+/* Apply Why Choose Us reason hover effects */
+
+.reason {
+  transition: transform 0.2s ease;
+}
+
+.reason:hover {
+  transform: translateX(5px);
+}
+
+/* Apply blog card hover effects 
+
+.blog-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+*/
+
 /* Apply smooth scrolling effect */
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Refine visual spacing in the services section */
+/* Refine visual spacing in sections */
 
 section {
   padding-block: 4rem;
 }
+
