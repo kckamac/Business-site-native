@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- Character Encoding & Viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary SEO Tags -->
+  <title>Our Services | Kmacims Web Solutions</title>
+  <meta name="description"
+        content="Explore web design, development, and consulting services from Kmacims Web Solutions. Fast, clean, results-focused websites for modern businesses." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.kmacims.com/services.html" />
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="Kmacims Web Solutions" />
+  <meta property="og:url"         content="https://www.kmacims.com.ng/services.html" />
+  <meta property="og:title"       content="Web Design, Development & Consulting — Kmacims" />
+  <meta property="og:description"  content="From responsive web design to performance-first development and expert consulting — see exactly how Kmacims Web Solutions can help your business online." />
+  <meta property="og:image"       content="https://www.kmacims.com.ng/images/og-image.png" />
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"  content="summary_large_image" />
+  <meta name="twitter:site"  content="@kmacims" />
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+<body>
+
+    <header class="site-header">
+        
+        <!--
+            The checkbox MUST come first in the DOM.
+            CSS can only reach LATER siblings with the ~ combinator.
+        -->
+        <input
+            type="checkbox"
+            id="menu-toggle"
+            class="menu-checkbox"
+            aria-hidden="true"
+        />
+
+        <!-- The visible nav bar row -->
+        <div class="nav-inner">
+
+            <!-- Clickable logo goes here -->
+            <a href="index.html" class="logo">Kmacims EAT</a>
+
+            <!-- Desktop navigation — hidden on mobile via CSS -->
+            <ul class="nav-links desktop-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html" aria-current="page">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <!--
+            The hamburger label.
+            `for` must match the checkbox `id` exactly.
+            The three <span> elements become the animated bars.
+            `aria-label` gives screen readers a meaningful name.
+            `role="button"` and `tabindex="0"` ensure keyboard reachability.
+            -->
+            <label
+            for="menu-toggle"
+            class="menu-label"
+            aria-label="Toggle navigation menu"
+            role="button"
+            tabindex="0"
+            >
+            <span></span>
+            <span></span>
+            <span></span>
+            </label>
+
+        </div><!-- /.nav-inner -->
+
+        <!--
+            The sliding mobile menu panel.
+            It is a SIBLING of .nav-inner — this is what makes the CSS trick possible.
+            It is invisible by default (max-height: 0) and expands when
+            the checkbox above it is :checked.
+        -->
+        <nav class="mobile-menu" aria-label="Mobile navigation">
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html" aria-current="page">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+
+    </header>
+
+    <main>
+          <!-- Page Hero -->
+        <section class="page-hero">
+            <h1>Our Services</h1>
+            <p>End-to-end web solutions for modern businesses. No templates. No shortcuts.</p>
+        </section>
+
+        <!-- Detailed Services Section -->
+        <section class="services-detail">
+            <div class="page-content">
+            <h2>What We Offer</h2>
+            <p class="section-intro">
+                Every service is delivered with the same commitment: purposeful design,
+                clean code, and results you can measure.
+            </p>
+
+            <div class="services-detail-grid">
+
+                <article class="service-detail-card">
+                <div class="svc-icon" aria-hidden="true">🎨</div>
+                <h3>Web Design</h3>
+                <p>
+                    Custom, responsive designs built around your brand identity. Every
+                    layout is crafted to guide your visitors towards a clear action —
+                    whether that's making a purchase, booking a call, or getting in touch.
+                </p>
+                <ul class="service-features">
+                    <li>Brand-aligned colour, typography, and visual language</li>
+                    <li>Mobile-first, fully responsive layouts</li>
+                    <li>UI/UX wireframing and prototyping</li>
+                    <li>Accessibility-compliant design (WCAG 2.1 AA)</li>
+                </ul>
+                </article>
+
+                <article class="service-detail-card">
+                <div class="svc-icon" aria-hidden="true">💻</div>
+                <h3>Development</h3>
+                <p>
+                    Clean, fast, hand-coded websites with no unnecessary frameworks or
+                    dependencies. Your site loads instantly, ranks well in search engines,
+                    and is easy to maintain for years to come.
+                </p>
+                <ul class="service-features">
+                    <li>Semantic HTML5 and modern CSS (Grid, custom properties)</li>
+                    <li>Google Lighthouse scores of 95+ across all categories</li>
+                    <li>Zero-dependency builds — no React, no bundlers required</li>
+                    <li>Cross-browser and device tested before delivery</li>
+                </ul>
+                </article>
+
+                <article class="service-detail-card">
+                <div class="svc-icon" aria-hidden="true">📈</div>
+                <h3>Consulting</h3>
+                <p>
+                    Strategic guidance to strengthen your digital presence. Whether you
+                    need a full site audit, an SEO plan, or advice on your tech stack,
+                    we help you make decisions based on data and long-term thinking.
+                </p>
+                <ul class="service-features">
+                    <li>Comprehensive SEO audit and on-page optimisation</li>
+                    <li>Content structure and keyword strategy</li>
+                    <li>Technology recommendations tailored to your budget</li>
+                    <li>Monthly performance reports and actionable insights</li>
+                </ul>
+                </article>
+
+            </div>
+            </div>
+        </section>
+
+        <!-- How We Work Section -->
+        <section class="services-process">
+            <div class="page-content">
+            <h2>How We Work</h2>
+            <p class="section-intro">
+                A clear, four-stage process that keeps you informed and in control
+                from the first conversation to the final launch.
+            </p>
+
+            <ol class="process-steps">
+
+                <li class="process-step">
+                <div class="step-number" aria-hidden="true">01</div>
+                <div class="step-text">
+                    <h3>Discovery</h3>
+                    <p>We start by listening. A 30-minute call to understand your business, your goals, your audience, and what success looks like for you.</p>
+                </div>
+                </li>
+
+                <li class="process-step">
+                <div class="step-number" aria-hidden="true">02</div>
+                <div class="step-text">
+                    <h3>Design</h3>
+                    <p>We create wireframes and a visual direction for your approval before writing a single line of code. No surprises at the end.</p>
+                </div>
+                </li>
+
+                <li class="process-step">
+                <div class="step-number" aria-hidden="true">03</div>
+                <div class="step-text">
+                    <h3>Build</h3>
+                    <p>Development against the approved design with regular progress check-ins. You always know where things stand.</p>
+                </div>
+                </li>
+
+                <li class="process-step">
+                <div class="step-number" aria-hidden="true">04</div>
+                <div class="step-text">
+                    <h3>Launch & Support</h3>
+                    <p>We handle the go-live process and stay available for post-launch support. You get a site that works — and a team that stands behind it.</p>
+                </div>
+                </li>
+
+            </ol>
+            </div>
+        </section>
+
+        <!-- CTA Strip -->
+        <section class="cta-strip">
+            <div class="page-content cta-strip-inner">
+            <div class="cta-strip-text">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Let's talk about what you need. No commitment, just a conversation.</p>
+            </div>
+            <a href="contact.html" class="cta-button">Get in Touch</a>
+            </div>
+        </section>
+
+    </main>
+
+      <footer class="site-footer" aria-label="Site footer">
+
+    <!-- Main Grid: Four Columns-->
+    <div class="footer-inner">
+
+        <!-- Column 1: Brand -->
+        <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Kmacims EAT</a>
+        <p>
+            Professional web solutions built with clean, native technologies.
+            Fast, accessible, and designed to grow with your business.
+        </p>
+        <div class="footer-social">
+            <a href="https://linkedin.com" class="social-link"
+            aria-label="Follow us on LinkedIn"
+            target="_blank" rel="noopener noreferrer">in</a>
+            <a href="https://x.com" class="social-link"
+            aria-label="Follow us on X"
+            target="_blank" rel="noopener noreferrer">𝕏</a>
+            <a href="https://instagram.com" class="social-link"
+            aria-label="Follow us on Instagram"
+            target="_blank" rel="noopener noreferrer">◎</a>
+            <a href="https://github.com" class="social-link"
+            aria-label="Visit our GitHub"
+            target="_blank" rel="noopener noreferrer">⌥</a>
+        </div>
+        </div>
+
+        <!-- Column 2: Company navigation -->
+        <nav class="footer-col" aria-label="Company links">
+        <h4>Company</h4>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+
+        <!-- Column 3: Services navigation -->
+        <nav class="footer-col" aria-label="Services links">
+        <h4>Services</h4>
+        <ul>
+            <li><a href="services.html#web-design">Web Design</a></li>
+            <li><a href="services.html#development">Development</a></li>
+            <li><a href="services.html#consulting">Consulting</a></li>
+            <li><a href="services.html#seo">SEO & Analytics</a></li>
+        </ul>
+        </nav>
+
+        <!-- Column 4: Contact details -->
+        <div class="footer-col">
+        <h4>Contact</h4>
+        <address>
+            <div class="contact-item">
+            <span aria-hidden="true">📍</span>
+            <span>Old Umuahia, Umuahia,
+                Abia State, Nigeria</span>
+            </div>
+            <div class="contact-item">
+            <span aria-hidden="true">📞</span>
+            <a href="tel:+2348037321869">+234 803 732 1869</a>
+            </div>
+            <div class="contact-item">
+            <span aria-hidden="true">✉️</span>
+            <a href="mailto:hello@kmacims.com">contact@kmacims.com.ng</a>
+            </div>
+        </address>
+        </div>
+
+    </div><!-- /.footer-inner -->
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Kmacims Web Solutions. All rights reserved.</p>
+        <ul class="footer-legal">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+    </div><!-- /.footer-bottom -->
+
+    </footer>
+
+</body>
+</html>

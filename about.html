@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!-- Character Encoding & Viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary SEO Tags -->
+  <title>About Us | Kmacims Web Solutions</title>
+  <meta name="description"
+        content="Learn about the team and mission behind Kmacims Web Solutions — building professional, performance-first websites for businesses that want to grow." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.kmacims.com.ng/about.html" />
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="Kmacims Web Solutions" />
+  <meta property="og:url"         content="https://www.kmacims.com.ng/about.html" />
+  <meta property="og:title"    content="About Us | Kmacims Web Solutions" />
+  <meta property="og:description"  content="Meet the people behind Kmacims Web Solutions. We are a team driven by clean code, great design, and a genuine commitment to our clients' success." />
+  <meta property="og:image"       content="https://www.kmacims.com.ng/images/og-image.png" />
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"  content="summary_large_image" />
+  <meta name="twitter:site"  content="@kmacims" />
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+<body>
+
+   <header class="site-header">
+        
+        <!--
+            The checkbox MUST come first in the DOM.
+            CSS can only reach LATER siblings with the ~ combinator.
+        -->
+        <input
+            type="checkbox"
+            id="menu-toggle"
+            class="menu-checkbox"
+            aria-hidden="true"
+        />
+
+        <!-- The visible nav bar row -->
+        <div class="nav-inner">
+
+            <!-- Clickable logo goes here -->
+            <a href="index.html" class="logo">Kmacims EAT</a>
+
+            <!-- Desktop navigation — hidden on mobile via CSS -->
+            <ul class="nav-links desktop-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" aria-current="page">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <!--
+            The hamburger label.
+            `for` must match the checkbox `id` exactly.
+            The three <span> elements become the animated bars.
+            `aria-label` gives screen readers a meaningful name.
+            `role="button"` and `tabindex="0"` ensure keyboard reachability.
+            -->
+            <label
+            for="menu-toggle"
+            class="menu-label"
+            aria-label="Toggle navigation menu"
+            role="button"
+            tabindex="0"
+            >
+            <span></span>
+            <span></span>
+            <span></span>
+            </label>
+
+        </div><!-- /.nav-inner -->
+
+        <!--
+            The sliding mobile menu panel.
+            It is a SIBLING of .nav-inner — this is what makes the CSS trick possible.
+            It is invisible by default (max-height: 0) and expands when
+            the checkbox above it is :checked.
+        -->
+        <nav class="mobile-menu" aria-label="Mobile navigation">
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
+            </ul>
+        </nav>
+
+
+    </header>
+
+    <main>
+        <!-- ── Page Hero ── -->
+        <section class="page-hero">
+            <h1>About Kmacims Web Solutions</h1>
+            <p>We build web experiences that grow businesses. Here's our story.</p>
+        </section>
+
+          <!-- ── Mission & Story Section ── -->
+        <section class="about-mission">
+            <div class="page-content about-mission-inner">
+
+            <div class="about-image">
+                <img
+                src="images/about-team.jpg"
+                alt="The Kmacims team collaborating around a desk with open laptops"
+                width="600"
+                height="450"
+                loading="lazy"
+                />
+            </div>
+
+            <div class="about-text">
+                <h2>We Started With a Single Belief</h2>
+                <p>
+                Great websites don't need bloated frameworks. They need intentional
+                design, clean code, and a deep understanding of the business they
+                represent. That belief has guided every project we've taken on since
+                Kmacims Web Solutions was founded.
+                </p>
+                <p>
+                We work with small and medium businesses that want a professional
+                online presence — without the agency price tag or the endless
+                revisions cycle. Our process is direct, our code is clean, and our
+                results speak for themselves.
+                </p>
+                <a href="contact.html" class="cta-button">Work With Us</a>
+            </div>
+
+            </div>
+        </section>
+
+          <!-- Core Values Section  -->
+        <section class="about-values">
+            <div class="page-content">
+            <h2>What We Stand For</h2>
+            <p class="section-intro">
+                These aren't just values on a page — they are the decisions
+                we make on every project, every day.
+            </p>
+
+            <div class="values-grid">
+
+                <article class="value-card">
+                <div class="value-icon" aria-hidden="true">🎯</div>
+                <h3>Purposeful Design</h3>
+                <p>Every element on your website earns its place. If it doesn't serve your visitor, it doesn't ship.</p>
+                </article>
+
+                <article class="value-card">
+                <div class="value-icon" aria-hidden="true">⚡</div>
+                <h3>Performance First</h3>
+                <p>Speed is not a feature — it is the foundation. Slow sites lose customers. We build fast from day one.</p>
+                </article>
+
+                <article class="value-card">
+                <div class="value-icon" aria-hidden="true">🤝</div>
+                <h3>Client Partnership</h3>
+                <p>We do not build in a vacuum. Your goals, your audience, and your feedback shape every decision we make.</p>
+                </article>
+
+                <article class="value-card">
+                <div class="value-icon" aria-hidden="true">🔒</div>
+                <h3>Built to Last</h3>
+                <p>Security and maintainability are built in, not bolted on. Your website should still be solid in five years.</p>
+                </article>
+
+            </div>
+            </div>
+        </section>
+
+          <!-- Team Section -->
+        <section class="about-team">
+            <div class="page-content">
+            <h2>Meet the Team</h2>
+            <p class="section-intro">
+                Small team. Big output. Every project gets senior attention.
+            </p>
+
+            <ul class="team-grid">
+
+                <li class="team-card">
+                <div class="team-avatar">
+                    <img
+                    src="images/team-kemi.jpg"
+                    alt="Kemi Adeyemi, Founder and Lead Designer"
+                    width="120"
+                    height="120"
+                    loading="lazy"
+                    />
+                </div>
+                <h3>Kemi Adeyemi</h3>
+                <p class="team-role">Founder & Lead Designer</p>
+                <p class="team-bio">
+                    10 years of experience turning complex business requirements into
+                    clear, beautiful interfaces.
+                </p>
+                </li>
+
+                <li class="team-card">
+                <div class="team-avatar">
+                    <img
+                    src="images/team-mike.jpg"
+                    alt="Mike Obi, Lead Developer"
+                    width="120"
+                    height="120"
+                    loading="lazy"
+                    />
+                </div>
+                <h3>Mike Obi</h3>
+                <p class="team-role">Lead Developer</p>
+                <p class="team-bio">
+                    Specialist in performance-first builds. If the site scores below 95
+                    on Lighthouse, he takes it personally.
+                </p>
+                </li>
+
+                <li class="team-card">
+                <div class="team-avatar">
+                    <img
+                    src="images/team-sara.jpg"
+                    alt="Sara Eze, Client Strategist"
+                    width="120"
+                    height="120"
+                    loading="lazy"
+                    />
+                </div>
+                <h3>Sara Eze</h3>
+                <p class="team-role">Client Strategist</p>
+                <p class="team-bio">
+                    Bridges the gap between what clients ask for and what their
+                    customers actually need to see.
+                </p>
+                </li>
+
+            </ul>
+            </div>
+        </section>
+
+
+    </main>
+
+   <!-- All Pages Footer Update -->
+    <footer class="site-footer" aria-label="Site footer">
+
+    <!-- Main Grid: Four Columns-->
+    <div class="footer-inner">
+
+        <!-- Column 1: Brand -->
+        <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Kmacims EAT</a>
+        <p>
+            Professional web solutions built with clean, native technologies.
+            Fast, accessible, and designed to grow with your business.
+        </p>
+        <div class="footer-social">
+            <a href="https://linkedin.com" class="social-link"
+            aria-label="Follow us on LinkedIn"
+            target="_blank" rel="noopener noreferrer">in</a>
+            <a href="https://x.com" class="social-link"
+            aria-label="Follow us on X"
+            target="_blank" rel="noopener noreferrer">𝕏</a>
+            <a href="https://instagram.com" class="social-link"
+            aria-label="Follow us on Instagram"
+            target="_blank" rel="noopener noreferrer">◎</a>
+            <a href="https://github.com" class="social-link"
+            aria-label="Visit our GitHub"
+            target="_blank" rel="noopener noreferrer">⌥</a>
+        </div>
+        </div>
+
+        <!-- Column 2: Company navigation -->
+        <nav class="footer-col" aria-label="Company links">
+        <h4>Company</h4>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+
+        <!-- Column 3: Services navigation -->
+        <nav class="footer-col" aria-label="Services links">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="services.html#web-design">Web Design</a></li>
+                <li><a href="services.html#development">Development</a></li>
+                <li><a href="services.html#consulting">Consulting</a></li>
+                <li><a href="services.html#seo">SEO & Analytics</a></li>
+            </ul>
+        </nav>
+
+        <!-- Column 4: Contact details -->
+         <div class="footer-col">
+            <h4>Contact</h4>
+            <address>
+                <div class="contact-item">
+                <span aria-hidden="true">📍</span>
+                <span>Old Umuahia, Umuahia,
+                    Abia State, Nigeria</span>
+                </div>
+                <div class="contact-item">
+                <span aria-hidden="true">📞</span>
+                <a href="tel:+2348037321869">+234 803 732 1869</a>
+                </div>
+                <div class="contact-item">
+                <span aria-hidden="true">✉️</span>
+                <a href="mailto:hello@kmacims.com">contact@kmacims.com.ng</a>
+                </div>
+            </address>
+            </div>
+
+    </div><!-- /.footer-inner -->
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Kmacims Web Solutions. All rights reserved.</p>
+        <ul class="footer-legal">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+    </div><!-- /.footer-bottom -->
+
+    </footer>
+
+
+</body>
+</html>

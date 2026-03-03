@@ -1,22 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kmacims Web Solutions</title>
-    <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Character Encoding & Viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary SEO Tags -->
+  <title>Kmacims Web Solutions | Professional Websites Built with Clean Code</title>
+  <meta name="description"
+        content="Kmacims Web Solutions builds fast, modern, and professional business websites using clean HTML and CSS — no frameworks, no bloat." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.kmacims.com.ng/index.html" />
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="Kmacims Web Solutions" />
+  <meta property="og:url"         content="https://www.kmacims.com.ng/index.html" />
+  <meta property="og:title"       content="Kmacims Web Solutions | Professional Websites" />
+  <meta property="og:description"  content="We build fast, modern, and professional business websites using clean HTML and CSS. No frameworks, no bloat — just great web work." />
+  <meta property="og:image"       content="https://www.kmacims.com/images/og-image.png" />
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"  content="summary_large_image" />
+  <meta name="twitter:site"  content="@kmacims" />
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+
 </head>    
 <body>
-    <header>
-        <nav>
-            <div class="logo">Kmacims EAT</div>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+    <header class="site-header">
+        
+        <!--
+            The checkbox MUST come first in the DOM.
+            CSS can only reach LATER siblings with the ~ combinator.
+        -->
+        <input
+            type="checkbox"
+            id="menu-toggle"
+            class="menu-checkbox"
+            aria-hidden="true"
+        />
+
+        <!-- The visible nav bar row -->
+        <div class="nav-inner">
+
+            <!-- Clickable logo goes here -->
+            <a href="index.html" class="logo">Kmacims EAT</a>
+
+            <!-- Desktop navigation — hidden on mobile via CSS -->
+            <ul class="nav-links desktop-nav">
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <!--
+            The hamburger label.
+            `for` must match the checkbox `id` exactly.
+            The three <span> elements become the animated bars.
+            `aria-label` gives screen readers a meaningful name.
+            `role="button"` and `tabindex="0"` ensure keyboard reachability.
+            -->
+            <label
+            for="menu-toggle"
+            class="menu-label"
+            aria-label="Toggle navigation menu"
+            role="button"
+            tabindex="0"
+            >
+            <span></span>
+            <span></span>
+            <span></span>
+            </label>
+
+        </div><!-- /.nav-inner -->
+
+        <!--
+            The sliding mobile menu panel.
+            It is a SIBLING of .nav-inner — this is what makes the CSS trick possible.
+            It is invisible by default (max-height: 0) and expands when
+            the checkbox above it is :checked.
+        -->
+        <nav class="mobile-menu" aria-label="Mobile navigation">
+            <ul>
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+
+
     </header>
 
     <main>
@@ -48,6 +121,89 @@
                 </article>
             </div>
         </section>
+
+        <!-- The Pricing Table Section -->
+
+        <section class="pricing" aria-labelledby="pricing-heading">
+        <div class="pricing-inner">
+
+            <div class="section-header">
+            <h2 id="pricing-heading">Simple, Transparent Pricing</h2>
+            <p>No hidden fees. No long-term lock-ins. Choose the plan that fits your business.</p>
+            </div>
+
+            <div class="pricing-grid">
+
+            <!-- BASIC PLAN -->
+            <article class="pricing-card">
+                <header class="plan-header">
+                <h3 class="plan-name">Basic</h3>
+                <p class="plan-tagline">Perfect for getting started online</p>
+                </header>
+                <div class="plan-price">
+                <span class="price-currency">$</span>
+                <span class="price-amount">399</span>
+                <span class="price-period">one-time</span>
+                </div>
+                <ul class="plan-features" aria-label="Basic plan features">
+                <li>5-page website</li>
+                <li>Mobile responsive design</li>
+                <li>Contact form</li>
+                <li>Basic SEO setup</li>
+                <li class="feature-unavailable">E-commerce</li>
+                <li class="feature-unavailable">Priority support</li>
+                </ul>
+                <a href="contact.html" class="plan-cta">Get Started</a>
+            </article>
+
+            <!-- ── PRO PLAN (RECOMMENDED) ── -->
+            <article class="pricing-card pricing-card--featured">
+                <header class="plan-header">
+                <div class="recommended-badge">Most Popular</div>
+                <h3 class="plan-name">Pro</h3>
+                <p class="plan-tagline">The complete business website</p>
+                </header>
+                <div class="plan-price">
+                <span class="price-currency">$</span>
+                <span class="price-amount">799</span>
+                <span class="price-period">one-time</span>
+                </div>
+                <ul class="plan-features" aria-label="Pro plan features">
+                <li>Up to 10 pages</li>
+                <li>Mobile responsive design</li>
+                <li>Advanced contact forms</li>
+                <li>Full SEO optimisation</li>
+                <li>Blog / news section</li>
+                <li class="feature-unavailable">Priority support</li>
+                </ul>
+                <a href="contact.html" class="plan-cta plan-cta--primary">Get Started</a>
+            </article>
+
+            <!-- ── ENTERPRISE PLAN ── -->
+            <article class="pricing-card">
+                <header class="plan-header">
+                <h3 class="plan-name">Enterprise</h3>
+                <p class="plan-tagline">Custom solutions at scale</p>
+                </header>
+                <div class="plan-price">
+                <span class="price-amount">Custom</span>
+                <span class="price-period">let's talk</span>
+                </div>
+                <ul class="plan-features" aria-label="Enterprise plan features">
+                <li>Unlimited pages</li>
+                <li>Mobile responsive design</li>
+                <li>Custom integrations</li>
+                <li>Advanced SEO strategy</li>
+                <li>E-commerce</li>
+                <li>Priority support</li>
+                </ul>
+                <a href="contact.html" class="plan-cta">Contact Us</a>
+            </article>
+
+            </div><!-- /.pricing-grid -->
+        </div><!-- /.pricing-inner -->
+        </section>
+
 
         <!-- 2. WHY CHOOSE US SECTION -->
         <section class="why-choose-us">
@@ -94,6 +250,142 @@
 
             </div>
         </section>
+
+        <!-- Logo Wall section -->
+        <section class="logo-wall" aria-labelledby="logos-heading">
+        <div class="logo-wall-inner">
+
+            <p class="logo-wall-label" id="logos-heading">
+            Trusted by forward-thinking businesses
+            </p>
+
+            <ul class="logo-grid" role="list">
+
+            <li>
+                <a href="#" class="logo-link" aria-label="BrightPath Consulting (client)">
+                <!-- Replace the span with an <img> when you have the logo file -->
+                <span class="logo-text" aria-hidden="true">BrightPath</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="logo-link" aria-label="Nexus Retail Ltd (client)">
+                <span class="logo-text" aria-hidden="true">Nexus Retail</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="logo-link" aria-label="Meridian Health Clinic (client)">
+                <span class="logo-text" aria-hidden="true">Meridian</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="logo-link" aria-label="Verdant Foods (client)">
+                <span class="logo-text" aria-hidden="true">Verdant Foods</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="logo-link" aria-label="Crestview Capital (client)">
+                <span class="logo-text" aria-hidden="true">Crestview</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="logo-link" aria-label="Zephyr Tech (client)">
+                <span class="logo-text" aria-hidden="true">Zephyr Tech</span>
+                </a>
+            </li>
+
+            </ul>
+        </div>
+        </section>
+
+        <!-- Testimonials section -->
+        <section class="testimonials" aria-labelledby="testimonials-heading">
+        <div class="testimonials-inner">
+
+            <div class="section-header">
+            <h2 id="testimonials-heading">What Our Clients Say</h2>
+            <p>Real results from real businesses we've had the privilege of working with.</p>
+            </div>
+
+            <div class="testimonials-grid">
+
+            <!-- Testimonial 1 -->
+            <article class="testimonial-card">
+                <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                </div>
+                <blockquote>
+                <p>Kmacims completely transformed our online presence. Within two months of launching our new site, our enquiries doubled. The attention to detail and performance was outstanding.</p>
+                <footer>
+                    <img
+                    src="images/client-sarah.jpg"
+                    alt="Sarah Okonkwo"
+                    class="testimonial-avatar"
+                    width="48"
+                    height="48"
+                    />
+                    <div>
+                    <cite class="client-name">Sarah Okonkwo</cite>
+                    <span class="client-role">CEO, BrightPath Consulting</span>
+                    </div>
+                </footer>
+                </blockquote>
+            </article>
+
+            <!-- Testimonial 2 -->
+            <article class="testimonial-card">
+                <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                </div>
+                <blockquote>
+                <p>The team delivered a fast, accessible, and beautiful site — on time and within budget. I especially appreciated how they explained every decision. Truly professional.</p>
+                <footer>
+                    <img
+                    src="images/client-james.jpg"
+                    alt="James Adetunji"
+                    class="testimonial-avatar"
+                    width="48"
+                    height="48"
+                    />
+                    <div>
+                    <cite class="client-name">James Adetunji</cite>
+                    <span class="client-role">Founder, Nexus Retail Ltd</span>
+                    </div>
+                </footer>
+                </blockquote>
+            </article>
+
+            <!-- Testimonial 3 -->
+            <article class="testimonial-card">
+                <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                </div>
+                <blockquote>
+                <p>We had worked with two other agencies before. Kmacims is in a different league. They built with clean code, no bloated plugins, and the site loads in under a second.</p>
+                <footer>
+                    <img
+                    src="images/client-amara.jpg"
+                    alt="Amara Nwosu"
+                    class="testimonial-avatar"
+                    width="48"
+                    height="48"
+                    />
+                    <div>
+                    <cite class="client-name">Amara Nwosu</cite>
+                    <span class="client-role">Director, Meridian Health Clinic</span>
+                    </div>
+                </footer>
+                </blockquote>
+            </article>
+
+            </div><!-- /.testimonials-grid -->
+        </div><!-- /.testimonials-inner -->
+        </section>
+
 
         <!-- 3. BLOG / NEWS SECTION -->
         <!--
@@ -166,11 +458,153 @@
         </section> 
         -->
 
+        <!-- FAQ section HTML -->
+        <section class="faq" aria-labelledby="faq-heading">
+        <div class="faq-inner">
+
+            <div class="section-header">
+            <h2 id="faq-heading">Frequently Asked Questions</h2>
+            <p>Answers to the most common questions about working with us.</p>
+            </div>
+
+            <div class="faq-list">
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                How long does it take to build a website?
+                </summary>
+                <div class="faq-answer">
+                <p>Most projects are completed within 3–4 weeks from the point of receiving your content and sign-off on the design direction. Larger enterprise projects may take 6–8 weeks. We provide a clear project timeline at the start of every engagement.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                Do I need to provide the written content?
+                </summary>
+                <div class="faq-answer">
+                <p>We recommend that clients provide their own copy, as you know your business best. However, we offer copywriting as an add-on service and can work with your existing brochures, social content, or talking points to produce polished, SEO-ready text.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                Will my website work on mobile phones and tablets?
+                </summary>
+                <div class="faq-answer">
+                <p>Absolutely. Every website we build is fully responsive by default — it adapts its layout for any screen size, from a small smartphone to a large desktop monitor. We test across iOS Safari, Android Chrome, and all major desktop browsers before delivery.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                Can I update the website myself after it's built?
+                </summary>
+                <div class="faq-answer">
+                <p>Yes. For clients who prefer self-management, we can integrate a headless CMS so you can update text, images, and blog posts without touching code. We also offer an affordable monthly maintenance plan if you'd prefer to leave updates to us.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                What do you need from me to get started?
+                </summary>
+                <div class="faq-answer">
+                <p>To begin, we need a completed brief (we provide a simple questionnaire), your brand assets (logo files, colours, preferred fonts if you have them), and a 50% deposit. From there, we handle everything — sitemap, wireframes, design, build, and launch.</p>
+                </div>
+            </details>
+
+            </div><!-- /.faq-list -->
+        </div><!-- /.faq-inner -->
+        </section>
+
+
     </main>
 
-    <footer>
-        <p>&copy; 2026. Kmacims Web Solutions. All rights reserved.</p>
+        <footer class="site-footer" aria-label="Site footer">
+
+    <!-- Main Grid: Four Columns-->
+    <div class="footer-inner">
+
+        <!-- Column 1: Brand -->
+        <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Kmacims EAT</a>
+        <p>
+            Professional web solutions built with clean, native technologies.
+            Fast, accessible, and designed to grow with your business.
+        </p>
+        <div class="footer-social">
+            <a href="https://linkedin.com" class="social-link"
+            aria-label="Follow us on LinkedIn"
+            target="_blank" rel="noopener noreferrer">in</a>
+            <a href="https://x.com" class="social-link"
+            aria-label="Follow us on X"
+            target="_blank" rel="noopener noreferrer">𝕏</a>
+            <a href="https://instagram.com" class="social-link"
+            aria-label="Follow us on Instagram"
+            target="_blank" rel="noopener noreferrer">◎</a>
+            <a href="https://github.com" class="social-link"
+            aria-label="Visit our GitHub"
+            target="_blank" rel="noopener noreferrer">⌥</a>
+        </div>
+        </div>
+
+        <!-- Column 2: Company navigation -->
+        <nav class="footer-col" aria-label="Company links">
+        <h4>Company</h4>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+
+        <!-- Column 3: Services navigation -->
+        <nav class="footer-col" aria-label="Services links">
+        <h4>Services</h4>
+        <ul>
+            <li><a href="services.html#web-design">Web Design</a></li>
+            <li><a href="services.html#development">Development</a></li>
+            <li><a href="services.html#consulting">Consulting</a></li>
+            <li><a href="services.html#seo">SEO & Analytics</a></li>
+        </ul>
+        </nav>
+
+        <!-- Column 4: Contact details -->
+         <div class="footer-col">
+        <h4>Contact</h4>
+        <address>
+            <div class="contact-item">
+            <span aria-hidden="true">📍</span>
+            <span>Old Umuahia, Umuahia,
+                Abia State, Nigeria</span>
+            </div>
+            <div class="contact-item">
+            <span aria-hidden="true">📞</span>
+            <a href="tel:+2348037321869">+234 803 732 1869</a>
+            </div>
+            <div class="contact-item">
+            <span aria-hidden="true">✉️</span>
+            <a href="mailto:hello@kmacims.com">contact@kmacims.com.ng</a>
+            </div>
+        </address>
+        </div>
+
+    </div><!-- /.footer-inner -->
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Kmacims Web Solutions. All rights reserved.</p>
+        <ul class="footer-legal">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+    </div><!-- /.footer-bottom -->
+
     </footer>
+
 
 </body>
 </html>

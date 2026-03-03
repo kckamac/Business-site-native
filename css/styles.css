@@ -51,6 +51,169 @@ nav {
   font-weight: 500;
 }
 
+/* Style logo as an anchor tag */
+.logo {
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-color);
+  letter-spacing: -0.02em;
+}
+
+/* Active page indicator */
+.nav-links a[aria-current="page"] {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.nav-links a[aria-current="page"]::after {
+  width: 100%;
+  background: var(--primary-color);
+}
+
+/* ---------------------------------------------
+ Mobile Menu — The :checked Hack
+ --------------------------------------------   */
+/* 1. Visually hide the checkbox but keep it in the accessibility tree */
+.menu-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* 2. The nav bar row — flex container */
+.nav-inner {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 3. The hamburger label — three animated bars */
+.menu-label {
+  display: none; /* Hidden on desktop */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0.4rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.menu-label:hover {
+  background: var(--light-bg);
+}
+
+.menu-label:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.menu-label span {
+  display: block;
+  height: 2px;
+  background: var(--text-color);
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+}
+
+.menu-label span:nth-child(2) {
+  width: 75%; /* Offset middle bar for style */
+}
+
+/* 4. The sliding panel — closed by default */
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  border-top: 1px solid transparent;
+  transition:
+    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s;
+  background: var(--bg-color);
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0.5rem 0 1rem;
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+.mobile-menu li a {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.mobile-menu li a:hover {
+  color: var(--primary-color);
+  background: #eff6ff;
+}
+
+.mobile-menu li a[aria-current="page"] {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* 
+   THE MAGIC — :checked selectors
+   Note the ~ combinator: targets LATER siblings of the checkbox.
+   Structure required: checkbox → .nav-inner → .mobile-menu (all siblings)
+    */
+
+/* Open the panel when checked */
+.menu-checkbox:checked ~ .mobile-menu {
+  max-height: 400px;
+  border-top-color: var(--border-color, #e5e7eb);
+}
+
+/* Animate bar 1: slide down and rotate to form top of X */
+.menu-checkbox:checked ~ .nav-inner .menu-label span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+/* Animate bar 2: fade and collapse */
+.menu-checkbox:checked ~ .nav-inner .menu-label span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+
+/* Animate bar 3: slide up and rotate to form bottom of X */
+.menu-checkbox:checked ~ .nav-inner .menu-label span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* 
+   RESPONSIVE — Switch between desktop and mobile nav
+    */
+
+/* On mobile: show hamburger, hide desktop nav */
+@media (max-width: 640px) {
+  .desktop-nav { display: none; }
+  .menu-label  { display: flex; }
+}
+
+/* On desktop: hide hamburger and mobile panel entirely */
+@media (min-width: 641px) {
+  .menu-label  { display: none; }
+  .mobile-menu { display: none; }
+}
+
+/*================================================================
+=================================================================*/
+
 /* Style the hero section */
 
 .hero {
@@ -88,6 +251,36 @@ nav {
   color: white;
   text-decoration: none;
   border-radius: 6px;
+}
+
+/* Page Banner used on About, Services, and Contact pages */
+
+.page-hero {
+  background: linear-gradient(135deg, #1e3a8a 0%, var(--primary-color) 100%);
+  color: white;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.page-hero h1 {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.page-hero p {
+  font-size: 1.1rem;
+  opacity: 0.88;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Shared Page Content Container */
+
+.page-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem 1rem;
 }
 
 /* Style the services section */
@@ -305,14 +498,196 @@ nav {
 }
 */
 
-/* Style the footer section */
+/* Style the footer section 
 
-footer {
-  text-align: center;
-  padding: 2rem 1rem;
+/* ═════════════════════════════════════════
+   SECTION 5 — Multi-Column Footer
+   ═════════════════════════════════════════ */
+
+/* Outer container */
+.site-footer {
   background: #111827;
   color: white;
+  padding: 3rem 1rem 0;
 }
+
+/* ── Main Grid ── */
+.footer-inner {
+  max-width: var(--max-width);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #1f2937;
+}
+
+/* ── Brand Column ── */
+.footer-logo {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: white;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.85rem;
+}
+
+.footer-brand p {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  max-width: 260px;
+}
+
+/* Social icons row */
+.footer-social {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: #1f2937;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background 0.2s ease;
+}
+
+.social-link:hover {
+  background: var(--primary-color);
+}
+
+/* ── Navigation and Contact Columns ── */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+}
+
+.footer-col h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #e5e7eb;
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-col ul a {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-col ul a:hover {
+  color: white;
+}
+
+/* ── Contact details inside <address> ── */
+.footer-col address {
+  font-style: normal; /* remove browser default italic */
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-bottom: 0.7rem;
+  line-height: 1.5;
+}
+
+.contact-item span:first-child {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.contact-item a {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-item a:hover {
+  color: white;
+}
+
+/* ── Bottom Bar ── */
+.footer-bottom {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1.25rem 0;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.footer-legal {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.footer-legal a {
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+  color: #9ca3af;
+}
+/* ── Footer: Tablet (≤ 768px) ── */
+@media (max-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Brand column takes the full width on its own row */
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-brand p {
+    max-width: 100%;
+  }
+}
+
+/* ── Footer: Mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
 
 /* Polish with transition effects for better UX */
 /* Apply navigational hover effects */
@@ -391,5 +766,1063 @@ html {
 
 section {
   padding-block: 4rem;
+}
+
+/* 
+_________________________
+   SECTION 2 — Core Pages CSS
+______________________________   
+*/
+
+/* Section intro text — the descriptive paragraph under each section heading */
+.section-intro {
+  text-align: center;
+  font-size: 1.05rem;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+/* Styles for the About Page */
+/* ── About: Mission Section ── */
+.about-mission {
+  background: var(--bg-color);
+}
+
+.about-mission-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.about-text h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 1.25rem;
+  color: var(--text-color);
+}
+
+.about-text p {
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.about-text .cta-button {
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+
+/* ── About: Values Section ── */
+.about-values {
+  background: #f9fafb;
+}
+
+.about-values h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.75rem;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.value-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.07);
+}
+
+.value-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.value-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.value-card p {
+  font-size: 0.92rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* About: Team Section */
+.about-team {
+  background: var(--bg-color);
+}
+
+.about-team h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.75rem;
+}
+
+.team-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.team-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: box-shadow 0.2s ease;
+}
+
+.team-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+}
+
+.team-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1.25rem;
+  border: 3px solid #dbeafe;
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.team-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+.team-role {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.75rem;
+}
+
+.team-bio {
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Styles for the Services Page */
+/* Services: Detailed Cards */
+.services-detail {
+  background: var(--bg-color);
+}
+
+.services-detail h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.75rem;
+}
+
+.services-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.service-detail-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-detail-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.07);
+}
+
+.svc-icon {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.service-detail-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+}
+
+.service-detail-card p {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.service-features {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-features li {
+  font-size: 0.88rem;
+  color: #374151;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+/* Custom checkmark bullet using ::before */
+.service-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* ── Services: Process Steps ── */
+.services-process {
+  background: #f9fafb;
+}
+
+.services-process h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.75rem;
+}
+
+.process-steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.process-step {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid #e5e7eb;
+  position: relative;
+}
+
+.step-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #dbeafe;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.04em;
+}
+
+.step-text h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.step-text p {
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Services: CTA Strip */
+.cta-strip {
+  background: #111827;
+  color: white;
+}
+
+.cta-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.cta-strip-text h2 {
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  color: white;
+  margin-bottom: 0.4rem;
+}
+
+.cta-strip-text p {
+  color: #9ca3af;
+  font-size: 1rem;
+}
+
+/*
+======================================================
+ Updated CONTACT PAGE Styles CSS  
+======================================================
+ */
+
+/* Outer section wrapper */
+.contact-section {
+  background: var(--bg-color);
+}
+
+/* Two-column page layout: form | details */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Stack on mobile */
+@media (max-width: 768px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Form section heading */
+.contact-form-title {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--text-color);
+}
+
+.contact-form-desc {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin-bottom: 2rem;
+  line-height: 1.65;
+}
+
+/* Required field note */
+.form-required-note {
+  font-size: 0.82rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+/* The form itself — stacked grid */
+.contact-form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* Two-column row inside the form */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Collapse form rows on small screens */
+@media (max-width: 520px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Individual field wrapper */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Required asterisk */
+.field-group label span[aria-hidden] {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+/* Shared input / select / textarea styles */
+.field-group input,
+.field-group select,
+.field-group textarea {
+  font-family: system-ui, sans-serif;
+  font-size: 0.95rem;
+  padding: 0.65rem 0.875rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  color: var(--text-color);
+  background: white;
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.field-group textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+/* Hint text beneath a field */
+.field-hint {
+  font-size: 0.78rem;
+  color: #9ca3af;
+}
+
+/* Checkbox row layout */
+.field-group--checkbox {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.field-group--checkbox input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.field-group--checkbox label {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: #4b5563;
+  cursor: pointer;
+}
+
+/* Focus State  */
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  outline: none;
+}
+
+/* Valid state — green border after user types */
+.field-group input:valid:not(:placeholder-shown),
+.field-group textarea:valid:not(:placeholder-shown) {
+  border-color: #22c55e;
+}
+
+/* Invalid state — red border after user types */
+.field-group input:invalid:not(:placeholder-shown),
+.field-group textarea:invalid:not(:placeholder-shown) {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Hint text turns red when field is invalid */
+.field-group input:invalid:not(:placeholder-shown) ~ .field-hint,
+.field-group textarea:invalid:not(:placeholder-shown) ~ .field-hint {
+  color: #ef4444;
+}
+
+/* Submit Button */
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--primary-color);
+  color: white;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 0.5rem;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Contact Details Sidebar */
+.contact-details {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 2rem;
+  position: sticky;
+  top: 2rem;
+}
+
+.contact-details h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.contact-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  color: var(--primary-color);
+  margin-top: 0.1rem;
+}
+
+.contact-item-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #9ca3af;
+  margin-bottom: 0.2rem;
+}
+
+.contact-item-value {
+  font-size: 0.92rem;
+  color: var(--text-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a.contact-item-value:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+
+/*
+========================================================
+Section 2 - Part 2
+========================================================
+*/
+
+/* Pricing Table Section Styles */
+.pricing {
+  background: #f9fafb;
+  padding-block: 5rem;
+}
+
+.pricing-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+
+/* Parent grid — 3 equal columns.
+   Defines 4 named row tracks that cards will subgrid onto:
+   [header] [price] [features] [cta] */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto 1fr auto;
+  gap: 0 1.5rem;
+  align-items: start;
+}
+
+/* Each card spans all 4 row tracks and subgrids into them */
+.pricing-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 2rem 1.75rem;
+  grid-row: 1 / -1;         /* Span all rows */
+  display: grid;
+  grid-template-rows: subgrid; /* Inherit parent row tracks */
+  gap: 0;
+  transition: box-shadow 0.2s ease;
+}
+
+.pricing-card:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+}
+
+/* Featured / recommended card */
+.pricing-card--featured {
+  border-color: var(--primary-color);
+  border-width: 2px;
+  box-shadow: 0 8px 30px rgba(37,99,235,0.1);
+  position: relative;
+}
+
+/* "Most Popular" badge — positioned above the card */
+.recommended-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-color);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.9rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Plan header row */
+.plan-header {
+  margin-bottom: 1.5rem;
+  padding-top: 0.25rem; /* Breathing room below the badge */
+}
+
+.plan-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+.plan-tagline {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Price row */
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.price-currency {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.price-amount {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-color);
+}
+
+.price-period {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  align-self: flex-end;
+  padding-bottom: 0.35rem;
+}
+
+/* Features list row */
+.plan-features {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.plan-features li {
+  font-size: 0.9rem;
+  color: #374151;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.plan-features li::before {
+  content: "✓";
+  color: #22c55e;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Unavailable features */
+.feature-unavailable {
+  color: #d1d5db !important;
+  text-decoration: line-through;
+}
+
+.feature-unavailable::before {
+  content: "✕" !important;
+  color: #d1d5db !important;
+}
+
+/* CTA button row */
+.plan-cta {
+  display: block;
+  text-align: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+  align-self: end;
+}
+
+.plan-cta:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Primary CTA (featured card) — filled by default */
+.plan-cta--primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.plan-cta--primary:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 640px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1.5rem;
+  }
+  .pricing-card {
+    grid-row: auto;
+    display: block;
+  }
+}
+
+
+/* Logo Wall Section Styles */
+.logo-wall {
+  background: #f9fafb;
+  padding-block: 3rem;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.logo-wall-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+
+.logo-wall-label {
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: 2rem;
+}
+
+.logo-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logo-link:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 15px rgba(37,99,235,0.08);
+}
+
+/* 
+____________
+NOTE:
+____________
+*/
+/* Text placeholder — remove when using real logo images */
+.logo-text {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #d1d5db;
+  transition: color 0.2s ease;
+}
+
+.logo-link:hover .logo-text {
+  color: var(--primary-color);
+}
+
+/* NOTE:
+/* Real image logos — add when using actual SVG/PNG files */
+.logo-img {
+  height: 32px;
+  width: auto;
+  max-width: 120px;
+  filter: grayscale(100%) opacity(0.5);
+  transition: filter 0.25s ease;
+}
+
+.logo-link:hover .logo-img {
+  filter: grayscale(0%) opacity(1);
+}
+*/
+
+
+/* Testimonials Section */
+.testimonials {
+  background: var(--bg-color);
+  padding-block: 5rem;
+}
+
+.testimonials-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+
+/* Shared section header — reused by multiple sections */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.65rem;
+}
+
+.section-header p {
+  color: #6b7280;
+  font-size: 1rem;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* The responsive grid */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
+/* Individual card */
+.testimonial-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.07);
+}
+
+/* Star rating */
+.testimonial-stars {
+  font-size: 1.1rem;
+  color: #f59e0b;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+
+/* The quote itself — remove default browser blockquote margin */
+blockquote {
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+blockquote p {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.7;
+  font-style: italic;
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+/* Author row inside blockquote footer */
+blockquote footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: auto;
+  background: transparent;  /* Override the site-footer background */
+  padding: 0;
+  color: inherit;
+}
+
+/* Client avatar image */
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--primary-color), #0ea5e9);
+}
+
+.client-name {
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.client-role {
+  font-size: 0.78rem;
+  color: #9ca3af;
+}
+
+/* FAQ Section */
+.faq {
+  background: var(--bg-color);
+  padding-block: 5rem;
+}
+
+.faq-inner {
+  max-width: 720px; /* Narrower than the max-width — better reading width */
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Each Q&A pair */
+.faq-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.faq-item[open] {
+  border-color: var(--primary-color);
+}
+
+/* The clickable question bar */
+.faq-question {
+  padding: 1.1rem 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.97rem;
+  color: var(--text-color);
+  list-style: none; /* Remove default triangle in Firefox */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: white;
+  transition: color 0.2s ease, background 0.2s ease;
+  user-select: none;
+}
+
+/* Remove the default disclosure triangle in WebKit/Blink */
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question:hover {
+  color: var(--primary-color);
+  background: #f9fafb;
+}
+
+/* The +/− icon — created with CSS, no extra HTML element */
+.faq-question::after {
+  content: "+";
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--primary-color);
+  flex-shrink: 0;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+/* When open: change + to − */
+.faq-item[open] .faq-question::after {
+  content: "−";
+}
+
+/* Question turns blue when item is open */
+.faq-item[open] .faq-question {
+  color: var(--primary-color);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* The answer panel */
+.faq-answer {
+  padding: 1.25rem 1.5rem;
+  background: #f9fafb;
+}
+
+.faq-answer p {
+  font-size: 0.93rem;
+  color: #4b5563;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.faq-answer p + p {
+  margin-top: 0.75rem;
 }
 
