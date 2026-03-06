@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Primary SEO Tags -->
   <title>Kmacims Web Solutions | Professional Websites Built with Clean Code</title>
+  <!-- Tell the browser to fetch the hero image immediately -->
+  <link rel="preload" as="image" href="images/hero-bg.avif" type="image/avif">
   <meta name="description"
         content="Kmacims Web Solutions builds fast, modern, and professional business websites using clean HTML and CSS — no frameworks, no bloat." />
   <!-- Canonical URL -->
@@ -21,6 +23,113 @@
   <!-- Twitter / X Card -->
   <meta name="twitter:card"  content="summary_large_image" />
   <meta name="twitter:site"  content="@kmacims" />
+  <!-- In <head> of index.html, BEFORE the <link> to styles.css -->
+<style>
+  /* Critical CSS — styles needed before the page is visible */
+/* Base Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #1a1a1a;
+}
+
+/* create css variables */
+
+:root {
+  --primary-color: #2563eb;
+  --text-color: #1a1a1a;
+  --bg-color: #ffffff;
+  --max-width: 1200px;
+  --spacing: 1rem;
+}
+
+/* Style the header and navigation bar */
+
+header {
+  background: var(--bg-color);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+nav {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+/* Style logo as an anchor tag */
+.logo {
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-color);
+  letter-spacing: -0.02em;
+}
+/* Style the hero section */
+
+.hero {
+  background-image: url('../images/hero-bg.avif');
+  background-image: url('../images/hero-bg.webp');
+  background-image: url('../images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding-block: 0;
+}
+
+.hero-overlay {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 6rem 1rem;
+  background: rgba(0, 0, 0, 0.55);
+} 
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.hero p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+</style>
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
 
@@ -95,7 +204,9 @@
     <main>
 
         <!-- 1. HERO SECTION with background image + overlay -->
+        
         <section class="hero">
+
             <div class="hero-overlay">
                 <h1>Beautiful Websites, Built for Growth</h1>
                 <p>We craft fast, modern websites that help businesses attract more customers and build lasting trust online.</p>
@@ -211,7 +322,17 @@
             <div class="why-grid">
 
                 <div class="why-image">
-                    <img src="images/why-choose-us.jpg" alt="A professional web developer working on a modern website" />
+                    <picture>
+                        <source srcset="images/why-choose-us.avif" type="image/avif">
+                        <source srcset="images/why-choose-us.webp" type="image/webp">
+                        <img src="images/why-choose-us.jpg" 
+                        alt="A professional web developer working on a modern website" 
+                        width="600"
+                        height="400"
+                        loading="lazy"
+                        />
+                    </picture>
+                    
                 </div>
 
                 <div class="why-reasons">
@@ -327,6 +448,7 @@
                     class="testimonial-avatar"
                     width="48"
                     height="48"
+                    loading="lazy"
                     />
                     <div>
                     <cite class="client-name">Sarah Okonkwo</cite>
@@ -350,6 +472,7 @@
                     class="testimonial-avatar"
                     width="48"
                     height="48"
+                    loading="lazy"
                     />
                     <div>
                     <cite class="client-name">James Adetunji</cite>
@@ -373,6 +496,7 @@
                     class="testimonial-avatar"
                     width="48"
                     height="48"
+                    loading="lazy"
                     />
                     <div>
                     <cite class="client-name">Amara Nwosu</cite>
