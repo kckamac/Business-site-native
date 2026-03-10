@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | Your Business Name</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .error-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    .error-code {
+      font-size: clamp(5rem, 20vw, 10rem);
+      font-weight: 900;
+      color: var(--primary-color);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .error-page h1 { font-size: 1.8rem; margin-bottom: 1rem; }
+    .error-page p  { color: #64748b; margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+        
+        <!--
+            The checkbox MUST come first in the DOM.
+            CSS can only reach LATER siblings with the ~ combinator.
+        -->
+        <input
+            type="checkbox"
+            id="menu-toggle"
+            class="menu-checkbox"
+            aria-hidden="true"
+        />
+
+        <!-- The visible nav bar row -->
+        <div class="nav-inner">
+
+            <!-- Clickable logo goes here -->
+            <a href="index.html" class="logo">Kmacims EAT</a>
+
+            <!-- Desktop navigation — hidden on mobile via CSS -->
+            <ul class="nav-links desktop-nav">
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <!--
+            The hamburger label.
+            `for` must match the checkbox `id` exactly.
+            The three <span> elements become the animated bars.
+            `aria-label` gives screen readers a meaningful name.
+            `role="button"` and `tabindex="0"` ensure keyboard reachability.
+            -->
+            <label
+            for="menu-toggle"
+            class="menu-label"
+            aria-label="Toggle navigation menu"
+            role="button"
+            tabindex="0"
+            >
+            <span></span>
+            <span></span>
+            <span></span>
+            </label>
+
+        </div><!-- /.nav-inner -->
+
+        <!--
+            The sliding mobile menu panel.
+            It is a SIBLING of .nav-inner — this is what makes the CSS trick possible.
+            It is invisible by default (max-height: 0) and expands when
+            the checkbox above it is :checked.
+        -->
+        <nav class="mobile-menu" aria-label="Mobile navigation">
+            <ul>
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+  <main>
+    <section class="error-page">
+      <div class="error-code">404</div>
+      <h1>Page Not Found</h1>
+      <p>The page you are looking for has moved or does not exist.</p>
+      <a href="index.html" class="cta-button">Back to Home</a>
+    </section>
+  </main>
+   <footer class="site-footer" aria-label="Site footer">
+
+    <!-- Main Grid: Four Columns-->
+    <div class="footer-inner">
+
+        <!-- Column 1: Brand -->
+        <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Kmacims EAT</a>
+        <p>
+            Professional web solutions built with clean, native technologies.
+            Fast, accessible, and designed to grow with your business.
+        </p>
+        <div class="footer-social">
+            <a href="https://linkedin.com" class="social-link"
+            aria-label="Follow us on LinkedIn"
+            target="_blank" rel="noopener noreferrer">in</a>
+            <a href="https://x.com" class="social-link"
+            aria-label="Follow us on X"
+            target="_blank" rel="noopener noreferrer">𝕏</a>
+            <a href="https://instagram.com" class="social-link"
+            aria-label="Follow us on Instagram"
+            target="_blank" rel="noopener noreferrer">◎</a>
+            <a href="https://github.com" class="social-link"
+            aria-label="Visit our GitHub"
+            target="_blank" rel="noopener noreferrer">⌥</a>
+        </div>
+        </div>
+
+        <!-- Column 2: Company navigation -->
+        <nav class="footer-col" aria-label="Company links">
+        <h4>Company</h4>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+
+        <!-- Column 3: Services navigation -->
+        <nav class="footer-col" aria-label="Services links">
+        <h4>Services</h4>
+        <ul>
+            <li><a href="services.html#web-design">Web Design</a></li>
+            <li><a href="services.html#development">Development</a></li>
+            <li><a href="services.html#consulting">Consulting</a></li>
+            <li><a href="services.html#seo">SEO & Analytics</a></li>
+        </ul>
+        </nav>
+
+        <!-- Column 4: Contact details -->
+         <div class="footer-col">
+        <h4>Contact</h4>
+        <address>
+            <div class="contact-item">
+            <span aria-hidden="true">📍</span>
+            <span>Old Umuahia, Umuahia,
+                Abia State, Nigeria</span>
+            </div>
+            <div class="contact-item">
+            <span aria-hidden="true">📞</span>
+            <a href="tel:+2348037321869">+234 803 732 1869</a>
+            </div>
+            <div class="contact-item">
+            <span aria-hidden="true">✉️</span>
+            <a href="mailto:hello@kmacims.com">contact@kmacims.com.ng</a>
+            </div>
+        </address>
+        </div>
+
+    </div><!-- /.footer-inner -->
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Kmacims Web Solutions. All rights reserved.</p>
+        <ul class="footer-legal">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+    </div><!-- /.footer-bottom -->
+
+    </footer>
+</body>
+</html>

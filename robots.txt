@@ -1,0 +1,5 @@
+# robots.txt — business-site
+User-agent: *
+Allow: /
+
+Sitemap: https://www.kmacims.com.ng/sitemap.xml

@@ -133,8 +133,90 @@ nav {
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/styles.css" />
 
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Kmacims Web Solutions",
+  "url": " https://kckamac.github.io/Business-site-native/",
+  "logo": "https:// https://kckamac.github.io/Business-site-native/ /images/og-image.png",
+  "image": " https:// https://kckamac.github.io/Business-site-native/ /images/og-image.png ",
+  "description": " We build fast, modern, and professional business websites using clean HTML and CSS.",
+  "telephone": "+234-803-732-1869",
+  "email": "contact@kmacims.com.ng",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": " Old Umuahia,",
+    "addressLocality": "Umuahia",
+    "addressRegion": "Abia State",
+    "postalCode": "440002",
+    "addressCountry": "NG"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "16:00"
+    }
+  ],
+  "sameAs": [
+    “https://www.linkedin.com/in/kmacims",
+    "https://twitter.com/kmacims"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What services do you offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer web design, development, and digital consulting for businesses of all sizes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a take to build a website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": " Most projects are completed within 3–4 weeks from the point of receiving your content and sign-off on the design direction. Larger enterprise projects may take 6–8 weeks. We provide a clear project timeline at the start of every engagement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with clients outside Nigeria?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We work with clients remotely across Africa, Europe, and North America."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do you need from me to get started?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": " To begin, we need a completed brief (we provide a simple questionnaire), your brand assets (logo files, colours, preferred fonts if you have them), and a 50% deposit. From there, we handle everything — sitemap, wireframes, design, build, and launch."
+      }
+    }
+  ]
+}
+</script>
+
+
 </head>    
 <body>
+    <!-- Skip Navigation Link — add this as the FIRST element inside <body> -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Add Progress Bar-->  
+    <div class="progress-bar" aria-hidden="true"></div>
+
     <header class="site-header">
         
         <!--
@@ -201,7 +283,7 @@ nav {
 
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- 1. HERO SECTION with background image + overlay -->
         
@@ -215,10 +297,10 @@ nav {
         </section>
 
         <!-- SERVICES SECTION -->
-        <section class="services">
+        <section class="services reveal">
             <h2>Our Services</h2>
             <div class="service-grid">
-                <article>
+                <article class="badge">
                     <h3>Web Design</h3>
                     <p>Modern, responsive designs for your business.</p>
                 </article>
@@ -235,7 +317,7 @@ nav {
 
         <!-- The Pricing Table Section -->
 
-        <section class="pricing" aria-labelledby="pricing-heading">
+        <section class="pricing reveal" aria-labelledby="pricing-heading">
         <div class="pricing-inner">
 
             <div class="section-header">
@@ -317,7 +399,7 @@ nav {
 
 
         <!-- 2. WHY CHOOSE US SECTION -->
-        <section class="why-choose-us">
+        <section class="why-choose-us reveal">
             <h2>Why Choose Us</h2>
             <div class="why-grid">
 
@@ -373,7 +455,7 @@ nav {
         </section>
 
         <!-- Logo Wall section -->
-        <section class="logo-wall" aria-labelledby="logos-heading">
+        <section class="logo-wall reveal" aria-labelledby="logos-heading">
         <div class="logo-wall-inner">
 
             <p class="logo-wall-label" id="logos-heading">
@@ -424,7 +506,7 @@ nav {
         </section>
 
         <!-- Testimonials section -->
-        <section class="testimonials" aria-labelledby="testimonials-heading">
+        <section class="testimonials reveal" aria-labelledby="testimonials-heading">
         <div class="testimonials-inner">
 
             <div class="section-header">
@@ -583,7 +665,7 @@ nav {
         -->
 
         <!-- FAQ section HTML -->
-        <section class="faq" aria-labelledby="faq-heading">
+        <section class="faq reveal" aria-labelledby="faq-heading">
         <div class="faq-inner">
 
             <div class="section-header">
@@ -592,6 +674,14 @@ nav {
             </div>
 
             <div class="faq-list">
+            <details class="faq-item">
+                <summary class="faq-question">
+                What services do you offer?
+                </summary>
+                <div class="faq-answer">
+                <p>We offer web design, development, and digital consulting for businesses of all sizes.</p>
+                </div>
+            </details>
 
             <details class="faq-item">
                 <summary class="faq-question">
@@ -608,6 +698,15 @@ nav {
                 </summary>
                 <div class="faq-answer">
                 <p>We recommend that clients provide their own copy, as you know your business best. However, we offer copywriting as an add-on service and can work with your existing brochures, social content, or talking points to produce polished, SEO-ready text.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                Do you work with clients outside Nigeria?
+                </summary>
+                <div class="faq-answer">
+                <p>Yes. We work with clients remotely across Africa, Europe, and North America.</p>
                 </div>
             </details>
 
